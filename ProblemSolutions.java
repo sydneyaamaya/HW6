@@ -1,7 +1,7 @@
 
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   SYDNEY AMAYA / SECTION 001
  *
  *   This java file contains the problem solutions for the methods lastBoulder,
  *   showDuplicates, and pair methods. You should utilize the Java Collection
@@ -64,11 +64,8 @@ public class ProblemSolutions {
      */
 
   public static int lastBoulder(int[] boulders) {
-
-      //
-      // ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME / SECTION # ABOVE
-      //
-      return -1;
+     
+    return -1;
   }
 
 
