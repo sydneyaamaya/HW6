@@ -64,8 +64,35 @@ public class ProblemSolutions {
      */
 
   public static int lastBoulder(int[] boulders) {
-     
-    return -1;
+    /*
+     * 1. create a priority queue contianing all elements from boulders that 
+     * prioritizes the max element
+     * 2. use a while loop that ends when size of the PQ is less than or equal to 1
+     * 3. get max element by getting the first element and then get the second 
+     * greatest element 
+     * 4. test if x == y and if x != y delet x and make y = y - x
+     * 5. repeat until size > 1, return value of last stone which will be given priority
+     */
+    //create the PQ in reverse order
+    PriorityQueue<Integer> pQueue = new PriorityQueue<>(Collections.reverseOrder());
+    //add elements from boulders to pQueue
+    for (int i = 0; i < boulders.length; i++){
+      pQueue.add(boulders[i]);
+    }
+    int x = 0;
+    int y = 0;
+    while (pQueue.size() > 1){
+      //remove head which is max element
+      y = pQueue.poll();
+      //peek at head which is new max element
+      x = pQueue.peek();
+      if (x != y){
+        y = y - x;
+        pQueue.add(y);
+        pQueue.remove(x);
+      }
+    }
+    return pQueue.peek();
   }
 
 
