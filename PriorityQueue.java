@@ -1,7 +1,7 @@
 
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   SYDNEY AMAYA / SECTION 001
  *
  *   Note, additional comments provided throughout this source code
  *   is for educational purposes
@@ -150,9 +150,13 @@ class PriorityQueue<E, P> {
      */
 
     public Node add(E e, P priority) {
-
-        // YOUR CODE GOES HERE
-        return null;
+        //create a node with the paramters and index size()
+        Node added = new Node(e, priority, size());
+        //use the arrayList add method to append node to the end of tree
+        tree.add(added);
+        //call pullUp method to reorder nodes
+        pullUp(added.idx);
+        return added;
     }
 
 
@@ -167,9 +171,8 @@ class PriorityQueue<E, P> {
      */
 
     public boolean contains(E e) {
-
-        // ADD YOUR CODE HERE
-        return false;
+        //call arraylist contains method 
+        return tree.contains(e);
     }
 
 
