@@ -114,12 +114,24 @@ public class ProblemSolutions {
      */
 
     public static ArrayList<String> showDuplicates(ArrayList<String> input) {
-
-        //
-        //  YOUR CODE GOES HERE
-        //
-        return new ArrayList<>();  // Make sure result is sorted in ascending order
-
+      /*
+      1. use a for loop to traverse the arraylist and compare each element to 
+      the rest of the elements
+      2. use a second for loop to traverse the arraylist comparing element i 
+      from outer loop to all elements j in the inner loop
+      3. if a duplicate array is found, add it it the arraylist of duplicates
+      4. sort the arraylist before returning it 
+      */ 
+      ArrayList<String> duplicates = new ArrayList<>(input.size());
+      for (int i = 0; i < input.size(); i++){
+        for (int j = i + 1; j < input.size() - 1; j++){
+          if (input.get(i).equals(input.get(j))){
+            duplicates.add(input.get(i));
+          }
+        }
+      }
+      Collections.sort(duplicates);
+      return duplicates;  // Make sure result is sorted in ascending order
     }
 
 
