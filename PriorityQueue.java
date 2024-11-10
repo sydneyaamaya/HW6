@@ -171,8 +171,24 @@ class PriorityQueue<E, P> {
      */
 
     public boolean contains(E e) {
-        //call arraylist contains method 
-        return tree.contains(e);
+        boolean contains = false;
+        //traverse the arraylist tree
+        int count = 0;
+        //start at head by getting the node at index 0 of tree
+        Node current = tree.get(count);
+        //use a while loop that ends when eithter the entire arraylist is traverse
+        //or the element is found
+        while (count < tree.size() - 1 && contains == false){
+            //check is the value of the current node is equal to e
+           if(current.value == e){
+            contains = true;
+           }
+           //update count
+           count++;
+           //update current
+           current = tree.get(count);
+        }
+        return contains;
     }
 
 

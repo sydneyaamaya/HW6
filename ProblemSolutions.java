@@ -70,28 +70,39 @@ public class ProblemSolutions {
      * 2. use a while loop that ends when size of the PQ is less than or equal to 1
      * 3. get max element by getting the first element and then get the second 
      * greatest element 
-     * 4. test if x == y and if x != y delet x and make y = y - x
-     * 5. repeat until size > 1, return value of last stone which will be given priority
+     * 4. test if x == y and if x != y delete x and make y = y - x
+     * 5. repeat until size > 2, return value of last stone which will be given priority
      */
-    //create the PQ in reverse order
-    PriorityQueue<Integer> pQueue = new PriorityQueue<>(Collections.reverseOrder());
-    //add elements from boulders to pQueue
+    //create a max priority queue 
+    PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>(boulders.length, Collections.reverseOrder());
+    //add all elements from boulders to the PQ
     for (int i = 0; i < boulders.length; i++){
       pQueue.add(boulders[i]);
     }
-    int x = 0;
+    int x = 0; 
     int y = 0;
-    while (pQueue.size() > 1){
-      //remove head which is max element
+    //ends when there are less than two boulders 
+    while (pQueue.size() >= 2){
+      //removes and returns the max element
       y = pQueue.poll();
-      //peek at head which is new max element
+      //returns but does not return the new max element
       x = pQueue.peek();
-      if (x != y){
-        y = y - x;
-        pQueue.add(y);
+      //if x == y remove only x since y has already been removed
+      if (x == y){
         pQueue.remove(x);
       }
+      //if x != y then y = y - x remove x and add y 
+      else if (x != y){
+        y = y - x;
+        pQueue.remove(x);
+        pQueue.add(y);
+      }
     }
+    //check to see if the queuue is empty and return 0 to prevent null pointer
+    if (pQueue.isEmpty()){
+      return 0;
+    }
+    //return the last element remaining using peek 
     return pQueue.peek();
   }
 
@@ -166,10 +177,7 @@ public class ProblemSolutions {
      */
 
     public static ArrayList<String> pair(int[] input, int k) {
-
-        //
-        //  YOUR CODE GOES HERE
-        //
-        return new ArrayList<>();  // Make sure returned lists is sorted as indicated above
+      
+      return new ArrayList<>();  // Make sure returned lists is sorted as indicated above
     }
 }
