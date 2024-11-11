@@ -177,7 +177,16 @@ public class ProblemSolutions {
      */
 
     public static ArrayList<String> pair(int[] input, int k) {
-      
-      return new ArrayList<>();  // Make sure returned lists is sorted as indicated above
+      /**
+       * 1. use two for loops, the outer loop traverses through the array
+       * 2. the inner loop adds i the element from the outer loop to every other element 
+       * and checks if the sum = k 
+       * 3. if i + j = k add the i and j values to a string and add to the arraylist
+       * 4. check if the pair is already present in the arraylist, do not add if already 
+       * in the arraylist 
+       * 5. the pairs in the arraylist need to be in the order of lowest to smallest i value
+       */
+      ArrayList<String> pairs = new ArrayList<String> (input.length);
+      return pairs;  // Make sure returned lists is sorted as indicated above
     }
 }
