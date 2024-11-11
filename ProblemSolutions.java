@@ -174,22 +174,24 @@ public class ProblemSolutions {
      */
 
     public static ArrayList<String> pair(int[] input, int k) {
+      /**
+       * 1. use two for loosp to traverse input, outer loop is i and inner loop adds
+       * i + j to see if == k 
+       * 2. if i + j == k, add i and j in string format to string arraylist
+       * 3. check that i is not already in arraylist
+       */
       ArrayList<String> pairs = new ArrayList<String> ();
-      ArrayList<Integer> tempI = new ArrayList<Integer>();
-      ArrayList<Integer> tempJ = new ArrayList<Integer>();
-      String temp = " ";
+      //sort input 
+      Arrays.sort(input);
+      //use a for loop to traverse input
       for (int i = 0; i < input.length; i++){
-        for (int j = 0; j < input.length; j++){
-          if(i + k == j && !tempI.contains(i)){
-            tempI.add(input[i]);
-            tempJ.add(input[j]); 
+        //use another for loop to add i to all the element after it and check if it equals k
+        for (int j = i + 1; j < input.length; j++){
+          //if i + j = k add and the pair is not already in the list add it to pairs
+          if ( input[i] + input[j] == k && !pairs.contains("(" + input[i] + ", " + input[j] + ")")){
+            pairs.add("(" + input[i] + ", " + input[j] + ")");
           }
         }
-      }
-      Collections.sort(tempI);
-      for (int i = 0; i < tempI.size(); i++){
-        temp = "(" + i + "," + tempJ.get(i) + ")";
-        pairs.add(temp);
       }
       return pairs;  // Make sure returned lists is sorted as indicated above
     }
